@@ -25,11 +25,11 @@ Paths are relative to the repository root (single Next.js project).
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Create `package.json` (Next.js 15, React 19, TypeScript 5, Tailwind CSS 4 via `@tailwindcss/postcss`, `@supabase/supabase-js`, `@supabase/ssr`, `resend`, `zod`; dev: `vitest`, `@playwright/test`, `@axe-core/playwright`, `eslint`, `eslint-config-next`) with scripts `dev`, `build`, `start`, `lint`, `typecheck`, `test`, `test:e2e`
-- [ ] T002 [P] Add `tsconfig.json` (strict, `@/*` → `src/*`), `next.config.ts`, `postcss.config.mjs`, `eslint.config.mjs`, `next-env.d.ts`
-- [ ] T003 [P] Add `.gitignore` (node_modules, .next, .env*.local, test-results, playwright-report) and `.env.example` listing `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `EMAIL_FROM`, `UNSUBSCRIBE_SECRET`, `IP_HASH_SALT`
-- [ ] T004 [P] Add `vitest.config.ts` (node env, `@` alias, `tests/unit/**`) and `playwright.config.ts` (projects: Pixel 7 and iPhone 14 viewports; `webServer` runs `npm run build && npm run start`)
-- [ ] T005 [P] Add `src/app/globals.css` with Tailwind import and brand tokens (label red `#b3261e`-range, warm wood brown, cream background, near-black text; all text pairs ≥ 4.5:1 contrast)
+- [X] T001 Create `package.json` (Next.js 15, React 19, TypeScript 5, Tailwind CSS 4 via `@tailwindcss/postcss`, `@supabase/supabase-js`, `@supabase/ssr`, `resend`, `zod`; dev: `vitest`, `@playwright/test`, `@axe-core/playwright`, `eslint`, `eslint-config-next`) with scripts `dev`, `build`, `start`, `lint`, `typecheck`, `test`, `test:e2e`
+- [X] T002 [P] Add `tsconfig.json` (strict, `@/*` → `src/*`), `next.config.ts`, `postcss.config.mjs`, `eslint.config.mjs`, `next-env.d.ts`
+- [X] T003 [P] Add `.gitignore` (node_modules, .next, .env*.local, test-results, playwright-report) and `.env.example` listing `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `EMAIL_FROM`, `UNSUBSCRIBE_SECRET`, `IP_HASH_SALT`
+- [X] T004 [P] Add `vitest.config.ts` (node env, `@` alias, `tests/unit/**`) and `playwright.config.ts` (projects: Pixel 7 and iPhone 14 viewports; `webServer` runs `npm run build && npm run start`)
+- [X] T005 [P] Add `src/app/globals.css` with Tailwind import and brand tokens (label red `#b3261e`-range, warm wood brown, cream background, near-black text; all text pairs ≥ 4.5:1 contrast)
 
 ---
 
@@ -37,14 +37,14 @@ Paths are relative to the repository root (single Next.js project).
 
 **⚠️ No user story work can begin until this phase is complete**
 
-- [ ] T006 Write `supabase/migrations/0001_init.sql`: `products` (id uuid PK, slug text unique, name text "required, ≤ 80 chars", tagline, description "required", ingredients text[] "required, ≥ 1 item", size_label, price_cents int "> 0", images jsonb "ordered array of { src, alt }; alt required", is_active bool default true, sort_order int default 0, updated_at); `waitlist_signups` (name "required, 1–80 chars", email "required, valid; unique on lower(email)", consent bool "must be true", ip_hash, unsubscribed_at, confirmation_email_status "pending | sent | failed", email_error, created_at); `admins` (user_id PK FK auth.users); `is_admin()`; `join_waitlist(p_name, p_email, p_consent, p_ip_hash)` with 5-per-hour-per-IP limit raising `rate_limited`, upsert on lower(email), re-subscribe, returns (id, created) and executable by `service_role` only; RLS per data-model.md; storage bucket `product-images` (public read, admin write)
-- [ ] T007 [P] Write `supabase/seed.sql` inserting the launch product (label content from spec FR-003, price_cents 2000, the four `/images/product/*.jpg` photos with descriptive alt text) and `supabase/seed-admin.sql` documenting the owner insert
-- [ ] T008 [P] Implement `src/lib/env.ts` (typed accessors; `isSupabaseConfigured()`, `isEmailConfigured()`; server-only secrets never imported by client code)
-- [ ] T009 [P] Implement `src/lib/supabase/server.ts` (cookie-based SSR client), `src/lib/supabase/admin.ts` (service-role client, `server-only`), `src/lib/supabase/middleware.ts` (session refresh helper)
-- [ ] T010 [P] Create `src/content/site.ts` exporting `BOOKING_URL = "https://square.site/book/3RETERR2XTKY5/quality-cuts-forest-hill-tx"`, shop name "Quality Cuts", city "Forest Hill, TX", address/hours placeholders marked TODO for the owner, Edgar's bio placeholder, video + poster paths
-- [ ] T011 [P] Create `src/content/product.ts` with the fallback launch product (same shape as `products`) and `src/lib/format.ts` (`formatPrice(cents)` → "$20.00")
-- [ ] T012 Implement `src/lib/products.ts` `getFeaturedProduct()` — reads the first active product from Supabase, falls back to `src/content/product.ts` when unconfigured or on error
-- [ ] T013 Create `src/components/BookingLink.tsx` (imports `BOOKING_URL`, `target="_blank" rel="noopener noreferrer"`, accessible label "Book with Edgar (opens Square booking in a new tab)") and `src/components/SiteHeader.tsx` + footer, wired into `src/app/layout.tsx` with metadata (title, description, Open Graph image = product photo)
+- [X] T006 Write `supabase/migrations/0001_init.sql`: `products` (id uuid PK, slug text unique, name text "required, ≤ 80 chars", tagline, description "required", ingredients text[] "required, ≥ 1 item", size_label, price_cents int "> 0", images jsonb "ordered array of { src, alt }; alt required", is_active bool default true, sort_order int default 0, updated_at); `waitlist_signups` (name "required, 1–80 chars", email "required, valid; unique on lower(email)", consent bool "must be true", ip_hash, unsubscribed_at, confirmation_email_status "pending | sent | failed", email_error, created_at); `admins` (user_id PK FK auth.users); `is_admin()`; `join_waitlist(p_name, p_email, p_consent, p_ip_hash)` with 5-per-hour-per-IP limit raising `rate_limited`, upsert on lower(email), re-subscribe, returns (id, created) and executable by `service_role` only; RLS per data-model.md; storage bucket `product-images` (public read, admin write)
+- [X] T007 [P] Write `supabase/seed.sql` inserting the launch product (label content from spec FR-003, price_cents 2000, the four `/images/product/*.jpg` photos with descriptive alt text) and `supabase/seed-admin.sql` documenting the owner insert
+- [X] T008 [P] Implement `src/lib/env.ts` (typed accessors; `isSupabaseConfigured()`, `isEmailConfigured()`; server-only secrets never imported by client code)
+- [X] T009 [P] Implement `src/lib/supabase/server.ts` (cookie-based SSR client), `src/lib/supabase/admin.ts` (service-role client, `server-only`), `src/lib/supabase/middleware.ts` (session refresh helper)
+- [X] T010 [P] Create `src/content/site.ts` exporting `BOOKING_URL = "https://square.site/book/3RETERR2XTKY5/quality-cuts-forest-hill-tx"`, shop name "Quality Cuts", city "Forest Hill, TX", address/hours placeholders marked TODO for the owner, Edgar's bio placeholder, video + poster paths
+- [X] T011 [P] Create `src/content/product.ts` with the fallback launch product (same shape as `products`) and `src/lib/format.ts` (`formatPrice(cents)` → "$20.00")
+- [X] T012 Implement `src/lib/products.ts` `getFeaturedProduct()` — reads the first active product from Supabase, falls back to `src/content/product.ts` when unconfigured or on error
+- [X] T013 Create `src/components/BookingLink.tsx` (imports `BOOKING_URL`, `target="_blank" rel="noopener noreferrer"`, accessible label "Book with Edgar (opens Square booking in a new tab)") and `src/components/SiteHeader.tsx` + footer, wired into `src/app/layout.tsx` with metadata (title, description, Open Graph image = product photo)
 
 **Checkpoint**: `npm run build` succeeds; layout with header + Book with Edgar renders.
 
