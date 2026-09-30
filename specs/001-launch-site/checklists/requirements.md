@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -31,5 +31,6 @@
 
 ## Notes
 
-- Open: FR-010 fulfillment method (shipping, local pickup, or both) awaits the owner's answer.
+- FR-010 resolved 2026-09-30: customer chooses free pickup at Quality Cuts or flat-rate US shipping.
+- Open content item (not a spec blocker): retail price, to be set by the owner before launch.
 - Items marked incomplete require spec updates before `/speckit-clarify` or `/speckit-plan`

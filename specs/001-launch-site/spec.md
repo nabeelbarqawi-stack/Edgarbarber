@@ -35,7 +35,13 @@ and the order appears for the owner.
    confirmation email within 5 minutes listing items, total paid, and fulfillment details.
 4. **Given** the visitor abandons or cancels payment, **When** they return to the site,
    **Then** no order is recorded and no stock is used, and they can try again.
-5. **Given** only 2 units are left, **When** a visitor tries to order 3,
+5. **Given** the visitor chooses pickup at Quality Cuts, **When** they check out,
+   **Then** no shipping cost is added, no address is requested, and the confirmation shows the
+   shop address and hours.
+6. **Given** the visitor chooses shipping, **When** they check out,
+   **Then** they enter a US shipping address, the shipping cost is added to the total, and the
+   confirmation shows the shipping address.
+7. **Given** only 2 units are left, **When** a visitor tries to order 3,
    **Then** they are told only 2 are available and cannot check out more than that.
 
 ---
@@ -115,8 +121,8 @@ reflects it, mark an order as shipped, and export the waitlist.
    **Then** they see each order's number, date, customer name, email, items, total,
    fulfillment details, and status, newest first.
 5. **Given** an order is "Paid", **When** the owner marks it "Fulfilled",
-   **Then** its status updates and the customer receives a "your order is on its way / ready"
-   email.
+   **Then** its status updates and the customer receives a "shipped" email (shipping orders)
+   or a "ready for pickup at Quality Cuts" email (pickup orders).
 6. **Given** the waitlist has signups, **When** the owner opens the waitlist,
    **Then** they see name, email, and signup date for each, and can download them as a CSV file.
 
@@ -150,7 +156,16 @@ reflects it, mark an order as shipped, and export the waitlist.
 - **FR-002**: The product details MUST show all owner-supplied photos, description, full
   ingredient list, size/weight, price, and stock state (in stock / low stock / sold out).
 - **FR-003**: Product claims (organic, homemade, ingredients) MUST come only from owner-supplied
-  content.
+  content. Launch content, taken from the product label:
+  - Name: Oak and Whiskey Beard Balm, by Edgar Salazar
+  - Tagline: Luxury oils & butters, conditioning for skin
+  - Ingredients: Hemp Seed Oil, Coconut Oil, Jojoba Oil, Cocoa Butter, Shea Butter, Beeswax,
+    Olive Oil, Fragrance
+  - Size: 62 g / 2 oz tin
+  - Photos: four owner-supplied product photos
+- **FR-003a**: The About Edgar section MUST include the owner-supplied video of Edgar with a
+  client in the shop. It MUST NOT autoplay with sound, MUST have visible play controls and a
+  still preview image, and MUST NOT delay the product from appearing.
 - **FR-004**: The site MUST include an About Edgar section with his photo, bio, a gallery of his
   cuts, the Quality Cuts address in Forest Hill, TX, and shop hours.
 
@@ -165,10 +180,13 @@ reflects it, mark an order as shipped, and export the waitlist.
 - **FR-008**: The site MUST NOT sell more units than are in stock.
 - **FR-009**: After payment, the customer MUST see a confirmation page with an order number and
   MUST receive a confirmation email listing items, total paid, and fulfillment details.
-- **FR-010**: Orders MUST support [NEEDS CLARIFICATION: How do customers get the balm — shipped
-  to them, picked up at Quality Cuts, or either at their choice?]
-- **FR-011**: Checkout MUST collect only the customer's name, email, and (when shipping) the
-  shipping address, plus what the payment provider requires.
+- **FR-010**: At checkout the customer MUST choose between **free pickup at Quality Cuts**
+  (Forest Hill, TX) and **shipping** to a US address. Shipping adds an owner-set shipping cost;
+  pickup adds none. Confirmation emails MUST state the chosen method (pickup location and hours,
+  or the shipping address).
+- **FR-011**: Checkout MUST collect only the customer's name, email, and (for shipping only)
+  the shipping address, plus what the payment provider requires. Pickup orders MUST NOT ask
+  for an address.
 
 **Waitlist**
 
@@ -198,8 +216,10 @@ reflects it, mark an order as shipped, and export the waitlist.
 - **FR-021**: The owner MUST be able to edit product price, description, ingredients, size,
   photos (upload, reorder, remove), and stock count without editing code.
 - **FR-022**: The owner MUST be able to view all orders (newest first) with number, date,
-  customer, items, total, fulfillment details, and status, and change status from "Paid" to
-  "Fulfilled", which sends the customer a notification email.
+  customer, items, total, fulfillment method and details, and status, filter by pickup or
+  shipping, and change status from "Paid" to "Fulfilled". Marking a shipped order fulfilled
+  sends a "your order has shipped" email; marking a pickup order fulfilled sends a "ready for
+  pickup at Quality Cuts" email.
 - **FR-023**: The owner MUST be able to view the waitlist and export it as a CSV file.
 - **FR-024**: The owner MUST be able to see when a confirmation email failed to send.
 
@@ -213,7 +233,7 @@ reflects it, mark an order as shipped, and export the waitlist.
 - **Product**: The beard balm. Name, description, ingredients, size, price, stock count,
   ordered photos, and whether it is currently orderable.
 - **Order**: A paid purchase. Order number, date, customer name and email, fulfillment method
-  and (if shipped) shipping address, line items (product, quantity, unit price), total paid,
+  (pickup or shipping), shipping address and shipping cost (shipping only), line items (product, quantity, unit price), total paid,
   status (Paid, Fulfilled, Refunded), and confirmation-email status.
 - **Waitlist Signup**: A person wanting product updates. Name, email (unique), consent,
   signup date, unsubscribed flag, confirmation-email status.
@@ -240,10 +260,14 @@ reflects it, mark an order as shipped, and export the waitlist.
 
 ## Assumptions
 
-- There is one product at launch (Oak & Whiskey beard balm, one size); the design should allow
+- There is one product at launch (Oak and Whiskey Beard Balm, 62 g / 2 oz tin); the design should allow
   more products later without rework.
-- Customers are in the United States; prices are in USD. Sales tax and shipping costs, if any,
-  are calculated by the hosted checkout using owner-configured rates.
+- Customers are in the United States; prices are in USD. Shipping is a single flat rate set by
+  the owner; sales tax, if any, is calculated by the hosted checkout.
+- Pickup orders are collected at Quality Cuts during shop hours; the site does not schedule
+  pickup times.
+- The retail price is not yet provided and will be set by the owner before launch.
+- The client shown in the barber video has agreed to appear on the website.
 - Customers check out as guests; there are no customer accounts in this feature.
 - There is a single owner/admin account.
 - The owner supplies product photos, description, ingredients, price, size, bio, gallery photos,
