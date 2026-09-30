@@ -5,7 +5,7 @@ export function AboutEdgar() {
   return (
     <section id="about" aria-labelledby="about-heading" className="scroll-mt-20">
       <div className="mx-auto grid max-w-5xl gap-8 px-4 py-14 sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] sm:items-center sm:gap-12">
-        <figure className="mx-auto w-full max-w-sm">
+        <figure className="mx-auto w-full max-w-[17rem] sm:max-w-sm">
           <video
             controls
             playsInline

@@ -122,10 +122,10 @@ email, unsubscribe.
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T035 [P] Add `README.md` (what the site is, setup per quickstart.md, env vars, where to edit content, how to register the owner, deferred ordering note)
-- [ ] T036 [P] Add `src/app/robots.ts`, `src/app/sitemap.ts`, and favicon/app icon from brand colors
-- [ ] T037 Run `npm run lint`, `npm run typecheck`, `npm run test`, `npm run build`, and `npm run test:e2e`; fix failures
-- [ ] T038 Review mobile screenshots of `/` at 390×844 against FR-001 and Constitution I/III
+- [X] T035 [P] Add `README.md` (what the site is, setup per quickstart.md, env vars, where to edit content, how to register the owner, deferred ordering note)
+- [X] T036 [P] Add `src/app/robots.ts`, `src/app/sitemap.ts`, and favicon/app icon from brand colors
+- [X] T037 Run `npm run lint`, `npm run typecheck`, `npm run test`, `npm run build`, and `npm run test:e2e`; fix failures
+- [X] T038 Review mobile screenshots of `/` at 390×844 against FR-001 and Constitution I/III
 
 ---
 

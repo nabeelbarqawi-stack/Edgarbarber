@@ -26,7 +26,7 @@ export const EDGAR = {
   // TODO(owner): replace with Edgar's own words.
   bio: [
     "Edgar Salazar is a barber at Quality Cuts in Forest Hill, TX.",
-    "When he isn't behind the chair, he makes his Oak and Whiskey Beard Balm by hand.",
+    "When he isn't behind the chair, he makes his homemade Oak and Whiskey Beard Balm.",
   ],
   video: {
     src: "/video/edgar-cutting.mp4",
