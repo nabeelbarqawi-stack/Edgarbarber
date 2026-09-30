@@ -31,6 +31,7 @@
 
 ## Notes
 
-- FR-010 resolved 2026-09-30: customer chooses free pickup at Quality Cuts or flat-rate US shipping.
-- Price set 2026-09-30: $20.00 per tin. Open content item: flat shipping rate.
+- 2026-09-30: online payment/ordering deferred by the owner; waitlist is the primary CTA.
+  Fulfillment decision (pickup or flat-rate shipping) is kept for the future ordering feature.
+- Price set 2026-09-30: $20.00 per tin.
 - Items marked incomplete require spec updates before `/speckit-clarify` or `/speckit-plan`
