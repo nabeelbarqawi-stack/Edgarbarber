@@ -87,11 +87,11 @@ email, unsubscribe.
 
 ### Tests for User Story 2
 
-- [ ] T026 [P] [US2] E2E in `tests/e2e/booking.spec.ts`: every "Book with Edgar" link on `/` and `/unsubscribe` has the exact `BOOKING_URL`, `target="_blank"`, `rel` contains `noopener`; header link visible at mobile viewport; About section shows bio, address, hours; video has `controls`, `poster`, no `autoplay`, `preload="none"`
+- [X] T026 [P] [US2] E2E in `tests/e2e/booking.spec.ts`: every "Book with Edgar" link on `/` and `/unsubscribe` has the exact `BOOKING_URL`, `target="_blank"`, `rel` contains `noopener`; header link visible at mobile viewport; About section shows bio, address, hours; video has `controls`, `poster`, no `autoplay`, `preload="none"`
 
 ### Implementation for User Story 2
 
-- [ ] T027 [US2] Build `src/components/AboutEdgar.tsx` (bio, video card with `controls playsInline preload="none"` + poster + caption, address, hours, BookingLink) and add it to `src/app/page.tsx` below the waitlist
+- [X] T027 [US2] Build `src/components/AboutEdgar.tsx` (bio, video card with `controls playsInline preload="none"` + poster + caption, address, hours, BookingLink) and add it to `src/app/page.tsx` below the waitlist
 
 **Checkpoint**: US1 + US2 work independently.
 

@@ -1,3 +1,4 @@
+import { AboutEdgar } from "@/components/AboutEdgar";
 import { ProductDetails } from "@/components/ProductDetails";
 import { ProductHero } from "@/components/ProductHero";
 import { WaitlistForm } from "@/components/WaitlistForm";
@@ -26,6 +27,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <AboutEdgar />
     </>
   );
 }
