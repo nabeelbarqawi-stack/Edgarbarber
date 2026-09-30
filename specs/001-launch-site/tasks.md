@@ -105,16 +105,16 @@ email, unsubscribe.
 
 ### Tests for User Story 3
 
-- [ ] T028 [P] [US3] E2E in `tests/e2e/admin.spec.ts`: `/admin` and `/admin/waitlist/export` redirect to `/admin/login` when signed out; login page renders labelled email field
-- [ ] T029 [P] [US3] Unit tests in `tests/unit/csv.test.ts` for waitlist CSV (header row, quoting of commas/quotes, formula-injection guard for values starting with `= + - @`)
+- [X] T028 [P] [US3] E2E in `tests/e2e/admin.spec.ts`: `/admin` and `/admin/waitlist/export` redirect to `/admin/login` when signed out; login page renders labelled email field
+- [X] T029 [P] [US3] Unit tests in `tests/unit/csv.test.ts` for waitlist CSV (header row, quoting of commas/quotes, formula-injection guard for values starting with `= + - @`)
 
 ### Implementation for User Story 3
 
-- [ ] T030 [US3] Implement `src/middleware.ts` (refresh Supabase session; redirect unauthenticated `/admin/*` except `/admin/login` and `/admin/auth/callback`)
-- [ ] T031 [US3] Implement `src/lib/admin.ts` `requireAdmin()` (server-side session + `is_admin()` check; redirect otherwise) and `src/lib/csv.ts` (`toCsv(rows)`)
-- [ ] T032 [US3] Implement `src/app/admin/login/page.tsx` + `src/app/admin/login/actions.ts` (`sendMagicLink` with `shouldCreateUser: false`) and `src/app/admin/auth/callback/route.ts`
-- [ ] T033 [US3] Implement `src/app/admin/page.tsx` + `src/app/admin/actions.ts` (`updateProduct` with zod validation: name ≤ 80, price > 0, ingredients one per line ≥ 1, images with required alt, upload to `product-images`, reorder/remove; `revalidatePath("/")`; `signOut`) and a waitlist summary (count, failed emails)
-- [ ] T034 [US3] Implement `src/app/admin/waitlist/page.tsx` (newest first; name, email, date, subscribed/unsubscribed, email-failed flag) and `src/app/admin/waitlist/export/route.ts` (CSV attachment `name,email,signed_up_at` for subscribed rows; `requireAdmin`)
+- [X] T030 [US3] Implement `src/middleware.ts` (refresh Supabase session; redirect unauthenticated `/admin/*` except `/admin/login` and `/admin/auth/callback`)
+- [X] T031 [US3] Implement `src/lib/admin.ts` `requireAdmin()` (server-side session + `is_admin()` check; redirect otherwise) and `src/lib/csv.ts` (`toCsv(rows)`)
+- [X] T032 [US3] Implement `src/app/admin/login/page.tsx` + `src/app/admin/login/actions.ts` (`sendMagicLink` with `shouldCreateUser: false`) and `src/app/admin/auth/callback/route.ts`
+- [X] T033 [US3] Implement `src/app/admin/page.tsx` + `src/app/admin/actions.ts` (`updateProduct` with zod validation: name ≤ 80, price > 0, ingredients one per line ≥ 1, images with required alt, upload to `product-images`, reorder/remove; `revalidatePath("/")`; `signOut`) and a waitlist summary (count, failed emails)
+- [X] T034 [US3] Implement `src/app/admin/waitlist/page.tsx` (newest first; name, email, date, subscribed/unsubscribed, email-failed flag) and `src/app/admin/waitlist/export/route.ts` (CSV attachment `name,email,signed_up_at` for subscribed rows; `requireAdmin`)
 
 **Checkpoint**: All stories independently functional.
 

@@ -1,8 +1,6 @@
 -- Edgarbarber launch schema: products, waitlist, admins, storage.
 -- See specs/001-launch-site/data-model.md.
 
-create extension if not exists pgcrypto;
-
 -- ---------------------------------------------------------------------------
 -- Tables
 -- ---------------------------------------------------------------------------
