@@ -21,8 +21,12 @@ Side effects for a new signup: row inserted, confirmation email sent, status rec
 ## GET /unsubscribe?token={token}
 
 `token` = `{signupId}.{base64url(HMAC-SHA256(signupId, UNSUBSCRIBE_SECRET))}`. Valid → sets
-`unsubscribed_at`, shows confirmation page. Invalid → friendly error page. `POST` to the same
-URL supports one-click `List-Unsubscribe-Post` and returns 200.
+`unsubscribed_at`, shows confirmation page. Invalid → friendly error page.
+
+## POST /api/unsubscribe?token={token}
+
+One-click unsubscribe for `List-Unsubscribe-Post`. 200 `{ result: "unsubscribed" }`,
+400 for an invalid token, 503 if the database is unavailable.
 
 ## Admin (authenticated owner only)
 

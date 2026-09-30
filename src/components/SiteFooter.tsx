@@ -11,10 +11,10 @@ export function SiteFooter() {
             {SHOP.name} · {SHOP.city}
           </p>
         </div>
-        <BookingLink variant="outline" className="border-cream text-cream hover:bg-cream hover:text-wood-dark" />
+        <BookingLink variant="outline-light" />
       </div>
       <p className="border-t border-cream/15 px-4 py-4 text-center text-xs text-cream/70">
-        © {new Date().getFullYear()} Edgar Salazar. Handmade in Forest Hill, TX.
+        © {new Date().getFullYear()} Edgar Salazar. Homemade in Forest Hill, TX.
       </p>
     </footer>
   );

@@ -10,6 +10,10 @@ export default defineConfig({
   use: {
     baseURL: `http://localhost:${PORT}`,
     trace: "retain-on-failure",
+    // Optional: point at a preinstalled Chromium (e.g. in sandboxes) instead of `playwright install`.
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_PATH
+      ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH }
+      : {},
   },
   projects: [
     { name: "pixel-7", use: { ...devices["Pixel 7"] } },

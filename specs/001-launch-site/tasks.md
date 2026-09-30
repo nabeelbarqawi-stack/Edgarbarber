@@ -59,21 +59,21 @@ email, unsubscribe.
 
 ### Tests for User Story 1
 
-- [ ] T014 [P] [US1] Unit tests in `tests/unit/waitlist.test.ts`: schema rejects empty name, name > 80 chars, invalid email, missing consent; lower-cases/trims email; honeypot or < 3 s submit → silent success without DB call; existing email → success, no email sent; new email → email sent and status `sent`; send failure → status `failed` with error; `rate_limited` → error message
-- [ ] T015 [P] [US1] Unit tests in `tests/unit/tokens.test.ts` (sign/verify round trip, tampered token rejected) and `tests/unit/email.test.ts` (template escapes HTML in name, contains unsubscribe URL, text alternative present)
-- [ ] T016 [P] [US1] E2E in `tests/e2e/home.spec.ts`: at mobile viewport, product image, name, "$20.00", and "Join the waitlist" are within the first viewport; all 4 photos have non-empty alt; 8 ingredients and "62 g / 2 oz" shown; waitlist form shows inline errors for bad email / no consent; axe finds no serious violations
+- [X] T014 [P] [US1] Unit tests in `tests/unit/waitlist.test.ts`: schema rejects empty name, name > 80 chars, invalid email, missing consent; lower-cases/trims email; honeypot or < 3 s submit → silent success without DB call; existing email → success, no email sent; new email → email sent and status `sent`; send failure → status `failed` with error; `rate_limited` → error message
+- [X] T015 [P] [US1] Unit tests in `tests/unit/tokens.test.ts` (sign/verify round trip, tampered token rejected) and `tests/unit/email.test.ts` (template escapes HTML in name, contains unsubscribe URL, text alternative present)
+- [X] T016 [P] [US1] E2E in `tests/e2e/home.spec.ts`: at mobile viewport, product image, name, "$20.00", and "Join the waitlist" are within the first viewport; all 4 photos have non-empty alt; 8 ingredients and "62 g / 2 oz" shown; waitlist form shows inline errors for bad email / no consent; axe finds no serious violations
 
 ### Implementation for User Story 1
 
-- [ ] T017 [P] [US1] Implement `src/lib/tokens.ts` (`createUnsubscribeToken(id)`, `verifyUnsubscribeToken(token)` with HMAC-SHA256 and timing-safe compare)
-- [ ] T018 [P] [US1] Implement `src/lib/email.ts` (`sendWaitlistConfirmation({ name, email, unsubscribeUrl })` via Resend with HTML + text, `List-Unsubscribe` and `List-Unsubscribe-Post` headers; escapes input; returns `{ ok, error? }`)
-- [ ] T019 [US1] Implement `src/lib/waitlist.ts` (zod schema; `joinWaitlist(input, deps)` orchestration: bot checks, IP hashing with `IP_HASH_SALT`, `join_waitlist` RPC, email send, status update) with injectable deps for tests
-- [ ] T020 [US1] Implement server action `src/app/actions.ts` `joinWaitlist(prevState, formData)` returning `WaitlistState` per contracts/http-api.md; friendly error when Supabase is unconfigured
-- [ ] T021 [P] [US1] Build `src/components/ProductHero.tsx` (priority `next/image`, name, tagline, price, "Join the waitlist" anchor to the form; mobile-first above the fold)
-- [ ] T022 [P] [US1] Build `src/components/ProductDetails.tsx` (photo gallery of all images with alt text, description, ingredient list, size, "by Edgar Salazar")
-- [ ] T023 [P] [US1] Build client component `src/components/WaitlistForm.tsx` (`useActionState`; labelled name/email fields, consent checkbox, hidden honeypot `website`, hidden `startedAt`; inline errors with `aria-describedby`; success message with `role="status"`)
-- [ ] T024 [US1] Compose `src/app/page.tsx` (hero → details → waitlist section `id="waitlist"`; ISR `revalidate = 60`)
-- [ ] T025 [US1] Implement `src/app/unsubscribe/page.tsx` (GET: verify token, set `unsubscribed_at`, show result) and `src/app/unsubscribe/route.ts`-equivalent POST handler for one-click unsubscribe (place POST at `src/app/api/unsubscribe/route.ts` and point `List-Unsubscribe-Post` there)
+- [X] T017 [P] [US1] Implement `src/lib/tokens.ts` (`createUnsubscribeToken(id)`, `verifyUnsubscribeToken(token)` with HMAC-SHA256 and timing-safe compare)
+- [X] T018 [P] [US1] Implement `src/lib/email.ts` (`sendWaitlistConfirmation({ name, email, unsubscribeUrl })` via Resend with HTML + text, `List-Unsubscribe` and `List-Unsubscribe-Post` headers; escapes input; returns `{ ok, error? }`)
+- [X] T019 [US1] Implement `src/lib/waitlist.ts` (zod schema; `joinWaitlist(input, deps)` orchestration: bot checks, IP hashing with `IP_HASH_SALT`, `join_waitlist` RPC, email send, status update) with injectable deps for tests
+- [X] T020 [US1] Implement server action `src/app/actions.ts` `joinWaitlist(prevState, formData)` returning `WaitlistState` per contracts/http-api.md; friendly error when Supabase is unconfigured
+- [X] T021 [P] [US1] Build `src/components/ProductHero.tsx` (priority `next/image`, name, tagline, price, "Join the waitlist" anchor to the form; mobile-first above the fold)
+- [X] T022 [P] [US1] Build `src/components/ProductDetails.tsx` (photo gallery of all images with alt text, description, ingredient list, size, "by Edgar Salazar")
+- [X] T023 [P] [US1] Build client component `src/components/WaitlistForm.tsx` (`useActionState`; labelled name/email fields, consent checkbox, hidden honeypot `website`, hidden `startedAt`; inline errors with `aria-describedby`; success message with `role="status"`)
+- [X] T024 [US1] Compose `src/app/page.tsx` (hero → details → waitlist section `id="waitlist"`; ISR `revalidate = 60`)
+- [X] T025 [US1] Implement `src/app/unsubscribe/page.tsx` (GET: verify token, set `unsubscribed_at`, show result) and `src/app/unsubscribe/route.ts`-equivalent POST handler for one-click unsubscribe (place POST at `src/app/api/unsubscribe/route.ts` and point `List-Unsubscribe-Post` there)
 
 **Checkpoint**: US1 fully functional and testable on its own.
 

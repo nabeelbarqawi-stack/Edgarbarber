@@ -1,7 +1,7 @@
 import { BOOKING_URL } from "@/content/site";
 
 type Props = {
-  variant?: "solid" | "outline";
+  variant?: "solid" | "outline" | "outline-light";
   className?: string;
   children?: React.ReactNode;
 };
@@ -9,6 +9,7 @@ type Props = {
 const styles = {
   solid: "bg-label text-white hover:bg-label-dark",
   outline: "border-2 border-ink text-ink hover:bg-ink hover:text-cream",
+  "outline-light": "border-2 border-cream text-cream hover:bg-cream hover:text-wood-dark",
 };
 
 /** Links to Edgar's Square booking page. Booking is never handled on this site. */
