@@ -162,6 +162,7 @@ reflects it, mark an order as shipped, and export the waitlist.
   - Ingredients: Hemp Seed Oil, Coconut Oil, Jojoba Oil, Cocoa Butter, Shea Butter, Beeswax,
     Olive Oil, Fragrance
   - Size: 62 g / 2 oz tin
+  - Price: $20.00
   - Photos: four owner-supplied product photos
 - **FR-003a**: The About Edgar section MUST include the owner-supplied video of Edgar with a
   client in the shop. It MUST NOT autoplay with sound, MUST have visible play controls and a
@@ -266,7 +267,8 @@ reflects it, mark an order as shipped, and export the waitlist.
   the owner; sales tax, if any, is calculated by the hosted checkout.
 - Pickup orders are collected at Quality Cuts during shop hours; the site does not schedule
   pickup times.
-- The retail price is not yet provided and will be set by the owner before launch.
+- Launch retail price is $20.00 per 62 g / 2 oz tin. The flat shipping rate is not yet set;
+  the owner sets it in the admin area before launch.
 - The client shown in the barber video has agreed to appear on the website.
 - Customers check out as guests; there are no customer accounts in this feature.
 - There is a single owner/admin account.

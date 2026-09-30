@@ -32,5 +32,5 @@
 ## Notes
 
 - FR-010 resolved 2026-09-30: customer chooses free pickup at Quality Cuts or flat-rate US shipping.
-- Open content item (not a spec blocker): retail price, to be set by the owner before launch.
+- Price set 2026-09-30: $20.00 per tin. Open content item: flat shipping rate.
 - Items marked incomplete require spec updates before `/speckit-clarify` or `/speckit-plan`
