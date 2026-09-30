@@ -4,7 +4,10 @@
  */
 
 export function siteUrl(): string {
-  return (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+  const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const url =
+    process.env.NEXT_PUBLIC_SITE_URL || (vercelHost ? `https://${vercelHost}` : "http://localhost:3000");
+  return url.replace(/\/$/, "");
 }
 
 export function supabasePublicConfig(): { url: string; anonKey: string } | null {
